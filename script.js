@@ -1,3 +1,8 @@
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.onclick = () => {
+  document.body.classList.toggle('dark');
+}
+
 // --- Полный каталог товаров с ценами в PLN ---
 const productsCatalog = [
   {name: "Куриное филе", price: 25, unit: "кг"},
@@ -106,9 +111,16 @@ function showList(key) {
     const catalogItem = productsCatalog.find(p => p.name === item.name);
     const price = (catalogItem.price * item.qty).toFixed(2);
     total += parseFloat(price);
+
     const li = document.createElement("li");
     li.textContent = `${item.name} - ${item.qty} ${catalogItem.unit} (${price} PLN)`;
-    li.addEventListener("click", () => li.classList.toggle("completed"));
+
+  li.addEventListener("click", (e) => {
+    li.classList.toggle("completed");
+    createParticlesFromElement(li);
+  });
+
+
     listEl.appendChild(li);
   });
 
@@ -146,6 +158,41 @@ function saveCustomList() {
   alert("Список сохранён!");
 }
 
+function createParticlesFromElement(li) {
+  const rect = li.getBoundingClientRect();
+  
+  // увеличиваем количество частиц
+  const particleCount = 20;
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    document.body.appendChild(particle);
+
+    // случайная точка внутри блока
+    const x = rect.left + Math.random() * rect.width;
+    const y = rect.top + Math.random() * rect.height;
+
+    particle.style.left = x + 'px';
+    particle.style.top = y + 'px';
+
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = 20 + Math.random() * 30;
+
+    const anim = particle.animate([
+      { transform: 'translate(0,0) scale(1)', opacity: 1 },
+      { transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px) scale(0)`, opacity: 0 }
+    ], {
+      duration: 600 + Math.random()*400,
+      easing: 'ease-out',
+      fill: 'forwards' // очень важно, чтобы анимация не сбрасывала стиль в конце
+    });
+
+    // удаляем элемент после окончания анимации
+    anim.onfinish = () => particle.remove();
+  }
+}
+
 // --- Добавление кнопки кастомного списка ---
 function addCustomListButton(name) {
   if(document.getElementById("list-buttons").querySelector(`button[data-key="${name}"]`)) return;
@@ -180,3 +227,18 @@ function closeModal() {
 
 // --- Инициализация кастомных списков ---
 Object.keys(customLists).forEach(addCustomListButton);
+
+// --- Генерация снежинок ---
+function createSnowflake() {
+  const snowflake = document.createElement('div');
+  snowflake.className = 'snowflake';
+  snowflake.style.left = Math.random() * window.innerWidth + 'px';
+  snowflake.style.fontSize = (10 + Math.random() * 20) + 'px';
+  snowflake.style.animationDuration = (5 + Math.random() * 5) + 's';
+  snowflake.textContent = '❄';
+  document.body.appendChild(snowflake);
+
+  setTimeout(() => snowflake.remove(), 10000);
+}
+
+setInterval(createSnowflake, 300);

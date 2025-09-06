@@ -3,10 +3,95 @@ body {
   background: #f0f2f5;
   margin: 0;
   padding: 20px;
+  position: relative;
+  overflow: hidden;
 }
+
+body.dark {
+  background: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark h1, body.dark h2 {
+  color: #fff;
+}
+
+body.dark .buttons button,
+body.dark .editor button,
+body.dark .tab-btn {
+  background: #555;
+  color: #fff;
+}
+
+body.dark .tab-btn.active {
+  background: #333;
+}
+
+body.dark #shopping-list li,
+body.dark #editor-list li {
+  background: #333;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+body.dark .delete-list-btn {
+  background: #b71c1c;
+}
+
 h1, h2 {
   text-align: center;
   color: #333;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 1em;
+  user-select: none;
+  pointer-events: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Кнопка темы */
+#theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 10px 15px;
+  border-radius: 50px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: 0.2s;
+}
+
+#theme-toggle:hover {
+  background: #45a049;
+}
+
+#theme-toggle:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2) inset;
+}
+
+/* Мобильная оптимизация */
+@media (max-width: 600px) {
+  #theme-toggle {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
 }
 
 .buttons, .editor {
@@ -29,6 +114,12 @@ h1, h2 {
 
 .buttons button:hover, .editor button:hover {
   background: #45a049;
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2) inset;
+  transition: 0.1s;
 }
 
 .list-container, .editor {
@@ -56,6 +147,41 @@ h1, h2 {
   text-decoration: line-through;
   color: #999;
   background: #e0e0e0;
+}
+
+#shopping-list li.completed {
+  position: relative;
+  color: #999;
+  background: #e0e0e0;
+  transition: 0.4s;
+}
+
+#shopping-list li.completed::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #999;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: strike 0.4s forwards;
+}
+
+
+@keyframes strike {
+  to { transform: scaleX(1); }
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: red;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
 }
 
 #total-price {
