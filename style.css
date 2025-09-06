@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 20px;
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 body.dark {
@@ -122,6 +122,17 @@ button:active {
 #shopping-list, #editor-list {
   list-style: none;
   padding: 0;
+}
+
+#snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0; 
 }
 
 #shopping-list li, #editor-list li {

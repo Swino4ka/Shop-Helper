@@ -225,10 +225,8 @@ function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 
-// --- Инициализация кастомных списков ---
 Object.keys(customLists).forEach(addCustomListButton);
 
-// --- Генерация снежинок ---
 function createSnowflake() {
   const snowflake = document.createElement('div');
   snowflake.className = 'snowflake';
@@ -236,7 +234,8 @@ function createSnowflake() {
   snowflake.style.fontSize = (10 + Math.random() * 20) + 'px';
   snowflake.style.animationDuration = (5 + Math.random() * 5) + 's';
   snowflake.textContent = '❄';
-  document.body.appendChild(snowflake);
+
+  document.getElementById('snow-container').appendChild(snowflake);
 
   setTimeout(() => snowflake.remove(), 10000);
 }
