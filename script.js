@@ -1,57 +1,75 @@
 // --- Полный каталог товаров с ценами в PLN ---
 const productsCatalog = [
   {name: "Куриное филе", price: 25, unit: "кг"},
-  {name: "Свинина", price: 30, unit: "кг"},
+  {name: "Свинина", price: 25, unit: "кг"},
   {name: "Рыба замороженная", price: 28, unit: "кг"},
-  {name: "Масло растительное", price: 12, unit: "л"},
-  {name: "Масло сливочное", price: 15, unit: "кг"},
+  {name: "Масло растительное", price: 10, unit: "шт"},
+  {name: "Масло сливочное", price: 7, unit: "шт"},
   {name: "Мука", price: 5, unit: "кг"},
-  {name: "Рис", price: 10, unit: "кг"},
-  {name: "Макароны", price: 8, unit: "кг"},
-  {name: "Гречка", price: 12, unit: "кг"},
+  {name: "Рис", price: 14, unit: "кг"},
+  {name: "Макароны", price: 10, unit: "кг"},
+  {name: "Гречка", price: 14, unit: "кг"},
   {name: "Бобовые", price: 10, unit: "кг"},
-  {name: "Сыр Gouda", price: 40, unit: "кг"},
+  {name: "Сыр Gouda", price: 36, unit: "кг"},
   {name: "Яйца", price: 1.5, unit: "шт"},
-  {name: "Хлеб", price: 5, unit: "шт"},
+  {name: "Хлеб", price: 7, unit: "шт"},
   {name: "Молоко", price: 6, unit: "л"},
-  {name: "Йогурт", price: 4, unit: "шт"},
-  {name: "Фрукты", price: 12, unit: "кг"},
+  {name: "Йогурт", price: 2, unit: "шт"},
+  {name: "Творог", price: 5, unit: "шт"},
+  {name: "Творог с жижей", price: 2.35, unit: "шт"},
+  {name: "Шоколад", price: 2, unit: "шт"},
+  {name: "Фрукты", price: 7, unit: "кг"},
   {name: "Овощи", price: 10, unit: "кг"},
   {name: "Зубная паста", price: 10, unit: "шт"},
   {name: "Зубные щетки", price: 8, unit: "шт"},
-  {name: "Мыло/гель для душа", price: 12, unit: "шт"},
-  {name: "Шампунь", price: 15, unit: "шт"},
-  {name: "Туалетная бумага", price: 25, unit: "12 рулонов"},
-  {name: "Чистящее средство кухня", price: 15, unit: "шт"},
-  {name: "Средство для ванной/туалета", price: 15, unit: "шт"},
+  {name: "Мыло", price: 10, unit: "л"},
+  {name: "Шампунь", price: 25, unit: "шт"},
+  {name: "Туалетная бумага", price: 15, unit: "12 рулонов"},
+  {name: "Чистящее средство кухня", price: 10, unit: "шт"},
+  {name: "Средство для ванной/туалета", price: 10, unit: "шт"},
   {name: "Мусорные пакеты", price: 12, unit: "30 шт"},
   {name: "Губки/тряпки", price: 10, unit: "шт"},
   {name: "Батарейки", price: 20, unit: "4 шт"},
-  {name: "Бумажные полотенца", price: 15, unit: "рулон"}
+  {name: "Бумажные полотенца", price: 4, unit: "рулон"},
+  {name: "Капсулы для посудомойки", price: 20, unit: "25 капсул"},
+  {name: "Стиральный порошок", price: 40, unit: "25 капсул"},  
+  {name: "Чай", price: 10, unit: "шт"},  
+  {name: "Замороженные овощи", price: 7, unit: "шт"},  
 ];
 
 // --- Предустановленные списки ---
 let predefinedLists = {
   big: [
     {name: "Куриное филе", qty: 6}, {name: "Свинина", qty: 3},
-    {name: "Рыба замороженная", qty: 3}, {name: "Масло растительное", qty: 2},
-    {name: "Масло сливочное", qty: 1}, {name: "Мука", qty: 2},
-    {name: "Рис", qty: 3}, {name: "Макароны", qty: 3},
-    {name: "Гречка", qty: 2}, {name: "Бобовые", qty: 2},
-    {name: "Сыр Gouda", qty: 1.5}, {name: "Яйца", qty: 30}
+    {name: "Рыба замороженная", qty: 1}, {name: "Масло растительное", qty: 1},
+    {name: "Масло сливочное", qty: 3},
+    {name: "Рис", qty: 2}, {name: "Макароны", qty: 3},
+    {name: "Гречка", qty: 2}, {name: "Бобовые", qty: 1},
+    {name: "Яйца", qty: 30},
+    {name: "Чай", qty: 1},
+    {name: "Замороженные овощи", qty: 4}
   ],
   small: [
+    {name: "Хлеб", qty: 2}, 
+    {name: "Йогурт", qty: 5}, 
+    {name: "Фрукты", qty: 3},
+    {name: "Овощи", qty: 2}, 
+    {name: "Сыр Gouda", qty: 0.5},
+    {name: "Творог с жижей", qty: 1},
+    {name: "Шоколад", qty: 2},
+  ],
+  smaller: [
     {name: "Хлеб", qty: 4}, {name: "Молоко", qty: 6},
     {name: "Йогурт", qty: 6}, {name: "Фрукты", qty: 3},
     {name: "Овощи", qty: 4}, {name: "Сыр Gouda", qty: 0.5}
   ],
   house: [
-    {name: "Зубная паста", qty: 2}, {name: "Зубные щетки", qty: 3},
-    {name: "Мыло/гель для душа", qty: 2}, {name: "Шампунь", qty: 2},
-    {name: "Туалетная бумага", qty: 12}, {name: "Чистящее средство кухня", qty: 1},
-    {name: "Средство для ванной/туалета", qty: 1}, {name: "Мусорные пакеты", qty: 30},
-    {name: "Губки/тряпки", qty: 3}, {name: "Батарейки", qty: 4},
-    {name: "Бумажные полотенца", qty: 5}
+    {name: "Стиральный порошок", qty: 1},
+    {name: "Капсулы для посудомойки", qty: 1},
+    {name: "Бумажные полотенца", qty: 8},
+    {name: "Зубная паста", qty: 2},
+    {name: "Туалетная бумага", qty: 1},
+    {name: "Мыло", qty: 1}
   ]
 };
 
