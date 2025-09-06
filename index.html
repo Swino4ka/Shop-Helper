@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Менеджер закупок</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Менеджер закупок</h1>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('lists')">Списки</button>
+  <button class="tab-btn" onclick="showTab('editor')">Редактор</button>
+</div>
+
+<div id="lists-tab" class="tab-content">
+  <div class="buttons" id="list-buttons">
+    <button onclick="showList('big')">Большой закуп</button>
+    <button onclick="showList('small')">Малый закуп</button>
+    <button onclick="showList('house')">Хоз. товары</button>
+  </div>
+
+  <div class="list-container">
+    <ul id="shopping-list"></ul>
+    <p id="total-price"></p>
+    <button id="delete-list-btn" class="delete-list-btn" onclick="deleteCurrentList()">Удалить список</button>
+  </div>
+</div>
+
+<div id="editor-tab" class="tab-content" style="display:none;">
+  <h2>Создать/редактировать список</h2>
+  <input type="text" id="new-list-name" placeholder="Название списка">
+  <div class="product-select">
+    <label>Выберите товар:</label>
+    <select id="product-select"></select>
+    <input type="number" id="product-quantity" placeholder="Количество" min="1">
+    <button onclick="addProductToEditor()">Добавить в список</button>
+  </div>
+  <ul id="editor-list"></ul>
+  <button onclick="saveCustomList()">Сохранить список</button>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <p>Вы уверены, что хотите удалить список?</p>
+    <button id="confirm-delete">Удалить</button>
+    <button onclick="closeModal()">Отмена</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

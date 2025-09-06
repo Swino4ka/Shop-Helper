@@ -1,0 +1,196 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+}
+h1, h2 {
+  text-align: center;
+  color: #333;
+}
+
+.buttons, .editor {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.buttons button, .editor button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.buttons button:hover, .editor button:hover {
+  background: #45a049;
+}
+
+.list-container, .editor {
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+#shopping-list, #editor-list {
+  list-style: none;
+  padding: 0;
+}
+
+#shopping-list li, #editor-list li {
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+#shopping-list li.completed {
+  text-decoration: line-through;
+  color: #999;
+  background: #e0e0e0;
+}
+
+#total-price {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.green { color: green; }
+.yellow { color: orange; }
+.red { color: red; }
+
+/* --- Модальное окно --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background: white;
+  margin: 15% auto;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  text-align: center;
+}
+.modal-content button {
+  margin: 5px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.tab-btn {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #4CAF50;
+  color: white;
+  transition: 0.2s;
+}
+.tab-btn.active {
+  background: #388E3C;
+}
+.tab-btn:hover {
+  background: #45a049;
+}
+
+.list-container, .editor {
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#shopping-list, #editor-list {
+  list-style: none;
+  padding: 0;
+}
+
+#shopping-list li, #editor-list li {
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+#shopping-list li.completed {
+  text-decoration: line-through;
+  color: #999;
+  background: #e0e0e0;
+}
+
+#total-price {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.green { color: green; }
+.yellow { color: orange; }
+.red { color: red; }
+
+.delete-list-btn {
+  display: block;
+  margin: 15px auto;
+  background: #E53935;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.delete-list-btn:hover {
+  background: #C62828;
+}
+
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background: white;
+  margin: 15% auto;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  text-align: center;
+}
+.modal-content button {
+  margin: 5px;
+}
+
