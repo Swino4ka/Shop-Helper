@@ -60,7 +60,6 @@ h1, h2 {
   100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
-/* Кнопка темы */
 #theme-toggle {
   position: fixed;
   top: 15px;
@@ -198,7 +197,6 @@ button:active {
 .yellow { color: orange; }
 .red { color: red; }
 
-/* --- Модальное окно --- */
 .modal {
   display: none;
   position: fixed;
@@ -302,7 +300,6 @@ button:active {
   background: #C62828;
 }
 
-/* Модальное окно */
 .modal {
   display: none;
   position: fixed;

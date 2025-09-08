@@ -3,7 +3,6 @@ themeToggle.onclick = () => {
   document.body.classList.toggle('dark');
 }
 
-// --- Полный каталог товаров с ценами в PLN ---
 const productsCatalog = [
   {name: "Куриное филе", price: 25, unit: "кг"},
   {name: "Вода (1.5 л)", price: 3, unit: "шт"},
@@ -45,7 +44,6 @@ const productsCatalog = [
   {name: "Дезодорант", price: 11, unit: "шт"},  
 ];
 
-// --- Предустановленные списки ---
 let predefinedLists = {
   big: [
     {name: "Куриное филе", qty: 6}, {name: "Свинина", qty: 3},
@@ -86,7 +84,6 @@ let customLists = JSON.parse(localStorage.getItem("customLists")) || {};
 let currentListKey = null;
 let deleteTargetKey = null;
 
-// --- Инициализация селекта ---
 const productSelect = document.getElementById("product-select");
 productsCatalog.forEach(p => {
   const option = document.createElement("option");
@@ -95,7 +92,6 @@ productsCatalog.forEach(p => {
   productSelect.appendChild(option);
 });
 
-// --- Переключение вкладок ---
 function showTab(tab) {
   document.querySelectorAll('.tab-content').forEach(div => div.style.display = 'none');
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -103,7 +99,6 @@ function showTab(tab) {
   document.querySelector(`.tab-btn[onclick="showTab('${tab}')"]`).classList.add('active');
 }
 
-// --- Показ списка ---
 function showList(key) {
   currentListKey = key;
   const listEl = document.getElementById("shopping-list");
@@ -119,14 +114,13 @@ function showList(key) {
     const li = document.createElement("li");
     li.textContent = `${item.name} - ${item.qty} ${catalogItem.unit} (${price} PLN)`;
 
-    // восстановление состояния
     if (item.completed) {
       li.classList.add("completed");
     }
 
     li.addEventListener("click", (e) => {
       li.classList.toggle("completed");
-      item.completed = li.classList.contains("completed"); // сохраняем состояние
+      item.completed = li.classList.contains("completed"); 
       if (customLists[key]) {
         localStorage.setItem("customLists", JSON.stringify(customLists)); 
       }
@@ -153,7 +147,6 @@ function addProductToEditor() {
   editorList.appendChild(li);
 }
 
-// --- Сохранение кастомного списка ---
 function saveCustomList() {
   const listName = document.getElementById("new-list-name").value.trim();
   if(!listName) return alert("Введите название списка!");
@@ -172,7 +165,6 @@ function saveCustomList() {
 function createParticlesFromElement(li) {
   const rect = li.getBoundingClientRect();
   
-  // увеличиваем количество частиц
   const particleCount = 20;
 
   for (let i = 0; i < particleCount; i++) {
@@ -180,7 +172,6 @@ function createParticlesFromElement(li) {
     particle.className = 'particle';
     document.body.appendChild(particle);
 
-    // случайная точка внутри блока
     const x = rect.left + Math.random() * rect.width;
     const y = rect.top + Math.random() * rect.height;
 
@@ -196,15 +187,13 @@ function createParticlesFromElement(li) {
     ], {
       duration: 600 + Math.random()*400,
       easing: 'ease-out',
-      fill: 'forwards' // очень важно, чтобы анимация не сбрасывала стиль в конце
+      fill: 'forwards' 
     });
 
-    // удаляем элемент после окончания анимации
     anim.onfinish = () => particle.remove();
   }
 }
 
-// --- Добавление кнопки кастомного списка ---
 function addCustomListButton(name) {
   if(document.getElementById("list-buttons").querySelector(`button[data-key="${name}"]`)) return;
   const btn = document.createElement("button");
@@ -214,7 +203,6 @@ function addCustomListButton(name) {
   document.getElementById("list-buttons").appendChild(btn);
 }
 
-// --- Удаление текущего списка ---
 function deleteCurrentList() {
   if(!currentListKey) return;
   deleteTargetKey = currentListKey;
