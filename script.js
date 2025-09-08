@@ -6,40 +6,43 @@ themeToggle.onclick = () => {
 // --- Полный каталог товаров с ценами в PLN ---
 const productsCatalog = [
   {name: "Куриное филе", price: 25, unit: "кг"},
-  {name: "Свинина", price: 25, unit: "кг"},
-  {name: "Рыба замороженная", price: 28, unit: "кг"},
-  {name: "Масло растительное", price: 10, unit: "шт"},
-  {name: "Масло сливочное", price: 7, unit: "шт"},
+  {name: "Вода (1.5 л)", price: 3, unit: "шт"},
+  {name: "Вода (5 л)", price: 4.99, unit: "шт"},
+  {name: "Свинина", price: 24.90, unit: "кг"},
+  {name: "Рыба замороженная", price: 17.80, unit: "кг"},
+  {name: "Масло растительное", price: 7.99, unit: "шт"},
+  {name: "Масло сливочное", price: 9.49, unit: "шт"},
   {name: "Мука", price: 5, unit: "кг"},
-  {name: "Рис", price: 14, unit: "кг"},
-  {name: "Макароны", price: 10, unit: "кг"},
-  {name: "Гречка", price: 14, unit: "кг"},
-  {name: "Бобовые", price: 10, unit: "кг"},
-  {name: "Сыр Gouda", price: 36, unit: "кг"},
+  {name: "Рис", price: 3.99, unit: "кг"},
+  {name: "Макароны", price: 7.50, unit: "кг"},
+  {name: "Гречка", price: 6.49, unit: "кг"},
+  {name: "Бобовые", price: 11.80, unit: "кг"},
+  {name: "Сыр Gouda", price: 31.99, unit: "кг"},
   {name: "Яйца", price: 1.5, unit: "шт"},
   {name: "Хлеб", price: 7, unit: "шт"},
   {name: "Молоко", price: 6, unit: "л"},
-  {name: "Йогурт", price: 2, unit: "шт"},
+  {name: "Йогурт", price: 2.49, unit: "шт"},
   {name: "Творог", price: 5, unit: "шт"},
   {name: "Творог с жижей", price: 2.35, unit: "шт"},
-  {name: "Шоколад", price: 2, unit: "шт"},
+  {name: "Шоколад", price: 2.49, unit: "шт"},
   {name: "Фрукты", price: 7, unit: "кг"},
   {name: "Овощи", price: 10, unit: "кг"},
   {name: "Зубная паста", price: 10, unit: "шт"},
   {name: "Зубные щетки", price: 8, unit: "шт"},
   {name: "Мыло", price: 10, unit: "л"},
   {name: "Шампунь", price: 25, unit: "шт"},
-  {name: "Туалетная бумага", price: 15, unit: "12 рулонов"},
+  {name: "Туалетная бумага", price: 13.79, unit: "12 рулонов"},
   {name: "Чистящее средство кухня", price: 10, unit: "шт"},
   {name: "Средство для ванной/туалета", price: 10, unit: "шт"},
   {name: "Мусорные пакеты", price: 12, unit: "30 шт"},
   {name: "Губки/тряпки", price: 10, unit: "шт"},
   {name: "Батарейки", price: 20, unit: "4 шт"},
-  {name: "Бумажные полотенца", price: 4, unit: "рулон"},
+  {name: "Бумажные полотенца", price: 4.99, unit: "упаковка(ок)"},
   {name: "Капсулы для посудомойки", price: 20, unit: "25 капсул"},
   {name: "Стиральный порошок", price: 40, unit: "25 капсул"},  
   {name: "Чай", price: 10, unit: "шт"},  
   {name: "Замороженные овощи", price: 7, unit: "шт"},  
+  {name: "Дезодорант", price: 11, unit: "шт"},  
 ];
 
 // --- Предустановленные списки ---
@@ -52,7 +55,8 @@ let predefinedLists = {
     {name: "Гречка", qty: 2}, {name: "Бобовые", qty: 1},
     {name: "Яйца", qty: 30},
     {name: "Чай", qty: 1},
-    {name: "Замороженные овощи", qty: 4}
+    {name: "Замороженные овощи", qty: 4},
+    {name: "Дезодорант", qty: 3}
   ],
   small: [
     {name: "Хлеб", qty: 2}, 
@@ -62,11 +66,11 @@ let predefinedLists = {
     {name: "Сыр Gouda", qty: 0.5},
     {name: "Творог с жижей", qty: 1},
     {name: "Шоколад", qty: 2},
+    {name: "Вода (1.5 л)", qty: 6},
+    {name: "Вода (6 л)", qty: 1},
   ],
   smaller: [
-    {name: "Хлеб", qty: 4}, {name: "Молоко", qty: 6},
-    {name: "Йогурт", qty: 6}, {name: "Фрукты", qty: 3},
-    {name: "Овощи", qty: 4}, {name: "Сыр Gouda", qty: 0.5}
+    {name: "Хлеб", qty: 4}, {name: "Молоко", qty: 6}
   ],
   house: [
     {name: "Стиральный порошок", qty: 1},
@@ -115,11 +119,19 @@ function showList(key) {
     const li = document.createElement("li");
     li.textContent = `${item.name} - ${item.qty} ${catalogItem.unit} (${price} PLN)`;
 
-  li.addEventListener("click", (e) => {
-    li.classList.toggle("completed");
-    createParticlesFromElement(li);
-  });
+    // восстановление состояния
+    if (item.completed) {
+      li.classList.add("completed");
+    }
 
+    li.addEventListener("click", (e) => {
+      li.classList.toggle("completed");
+      item.completed = li.classList.contains("completed"); // сохраняем состояние
+      if (customLists[key]) {
+        localStorage.setItem("customLists", JSON.stringify(customLists)); 
+      }
+      createParticlesFromElement(li);
+    });
 
     listEl.appendChild(li);
   });
@@ -129,7 +141,6 @@ function showList(key) {
   totalEl.className = total < 200 ? "green" : total < 400 ? "yellow" : "red";
 }
 
-// --- Добавление товара в редактор ---
 function addProductToEditor() {
   const name = document.getElementById("product-select").value;
   const qty = parseFloat(document.getElementById("product-quantity").value);
