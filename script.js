@@ -21,7 +21,8 @@ const productsCatalog = [
   {name: "Хлеб", price: 7, unit: "шт"},
   {name: "Молоко", price: 6, unit: "л"},
   {name: "Йогурт", price: 2.49, unit: "шт"},
-  {name: "Творог", price: 5, unit: "шт"},
+  {name: "Сметана", price: 4, unit: "шт"},
+  {name: "Творог", price: 3.29, unit: "шт"},
   {name: "Творог с жижей", price: 2.35, unit: "шт"},
   {name: "Шоколад", price: 2.49, unit: "шт"},
   {name: "Фрукты", price: 7, unit: "кг"},
@@ -46,11 +47,15 @@ const productsCatalog = [
 
 let predefinedLists = {
   big: [
-    {name: "Куриное филе", qty: 6}, {name: "Свинина", qty: 3},
-    {name: "Рыба замороженная", qty: 1}, {name: "Масло растительное", qty: 1},
+    {name: "Куриное филе", qty: 6}, 
+    {name: "Свинина", qty: 3},
+    {name: "Рыба замороженная", qty: 1}, 
+    {name: "Масло растительное", qty: 1},
     {name: "Масло сливочное", qty: 3},
-    {name: "Рис", qty: 2}, {name: "Макароны", qty: 3},
-    {name: "Гречка", qty: 2}, {name: "Бобовые", qty: 1},
+    {name: "Рис", qty: 2}, 
+    {name: "Макароны", qty: 3},
+    {name: "Гречка", qty: 2}, 
+    {name: "Бобовые", qty: 1},
     {name: "Яйца", qty: 30},
     {name: "Чай", qty: 1},
     {name: "Замороженные овощи", qty: 4},
@@ -67,6 +72,7 @@ let predefinedLists = {
     {name: "Шоколад", qty: 2},
     {name: "Вода (1.5 л)", qty: 6},
     {name: "Вода (6 л)", qty: 1},
+    {name: "Сметана", qty: 1},
   ],
   smaller: [
     {name: "Хлеб", qty: 4}, {name: "Молоко", qty: 6}
