@@ -71,7 +71,7 @@ let predefinedLists = {
     {name: "Творог с жижей", qty: 2},
     {name: "Шоколад", qty: 2},
     {name: "Вода (1.5 л)", qty: 6},
-    {name: "Вода (6 л)", qty: 1},
+    {name: "Вода (5 л)", qty: 1},
     {name: "Сметана", qty: 1},
   ],
   smaller: [
