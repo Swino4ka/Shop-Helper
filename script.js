@@ -43,6 +43,9 @@ const productsCatalog = [
   {name: "Чай", price: 10, unit: "шт"},  
   {name: "Замороженные овощи", price: 7, unit: "шт"},  
   {name: "Дезодорант", price: 11, unit: "шт"},  
+  {name: "Фасоль", price: 6, unit: "шт"},  
+  {name: "Нарезка", price: 6, unit: "шт"},  
+  {name: "Паштет", price: 6, unit: "шт"},  
 ];
 
 let predefinedLists = {
@@ -67,12 +70,15 @@ let predefinedLists = {
     {name: "Фрукты", qty: 3},
     {name: "Овощи", qty: 2}, 
     {name: "Сыр Gouda", qty: 0.5},
-    {name: "Творог", qty: 2},
+    {name: "Творог", qty: 3},
     {name: "Творог с жижей", qty: 2},
     {name: "Шоколад", qty: 2},
     {name: "Вода (1.5 л)", qty: 6},
     {name: "Вода (5 л)", qty: 1},
     {name: "Сметана", qty: 1},
+    {name: "Фасоль", qty: 2},
+    {name: "Паштет", qty: 1},
+    {name: "Нарезка", qty: 1},
   ],
   smaller: [
     {name: "Хлеб", qty: 4}, {name: "Молоко", qty: 6}
